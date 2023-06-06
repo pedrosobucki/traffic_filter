@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/users/pedro/Desktop/MODELSIM/Trabalho 3
 Ecompara_dado
-Z1 w1686016766
+Z1 w1686032769
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 R0
@@ -17,13 +17,13 @@ Z4 8comp.vhd
 Z5 Fcomp.vhd
 l0
 L7
-Va_6i_OlXnM^6kL9FE<hU=2
-!s100 :oA2Y?9FmcQo4LKXl]YKJ3
+V_4o[9eEh?EibD>JMmAR^;3
+!s100 LU?U_J8M9X92DQ>OYL3=H0
 Z6 OV;C;10.5b;63
 32
-Z7 !s110 1686016866
+Z7 !s110 1686033531
 !i10b 1
-Z8 !s108 1686016866.000000
+Z8 !s108 1686033531.000000
 Z9 !s90 -reportprogress|300|-work|work|comp.vhd|
 Z10 !s107 comp.vhd|
 !i113 1
@@ -32,11 +32,11 @@ Z12 tExplicit 1 CvgOpt 0
 Aa1
 R2
 R3
-DEx4 work 12 compara_dado 0 22 a_6i_OlXnM^6kL9FE<hU=2
-l16
+Z13 DEx4 work 12 compara_dado 0 22 _4o[9eEh?EibD>JMmAR^;3
+l17
 L14
-V9Tl0=[Q_1eAID4ZhdbI7K2
-!s100 l;BiU=JXV17T_2FmTVBj^1
+V2zT;7C5U1``2YhFoiEZnB1
+!s100 D0S]bOe6g];YheLOPoA?O1
 R6
 32
 R7
@@ -48,14 +48,14 @@ R10
 R11
 R12
 Etb
-w1684351206
-Z13 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z14 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z14 w1684351206
+Z15 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z16 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 R2
 R3
 R0
-8tb.vhd
-Ftb.vhd
+Z17 8tb.vhd
+Z18 Ftb.vhd
 l0
 L11
 V4BFD_YKP6]OHT>2ZY]Dlh2
@@ -65,51 +65,73 @@ R6
 R7
 !i10b 1
 R8
-!s90 -reportprogress|300|-work|work|tb.vhd|
-!s107 tb.vhd|
+Z19 !s90 -reportprogress|300|-work|work|tb.vhd|
+Z20 !s107 tb.vhd|
 !i113 1
 R11
 R12
-Etp3
-Z15 w1686016865
-R13
-R14
+Atb
+Z21 DEx4 work 3 tp3 0 22 @oojg]<Ze:]7<Z5FE5Q:U0
+R15
+R16
 R2
 R3
-R0
-Z16 8tp3.vhd
-Z17 Ftp3.vhd
-l0
-L11
-V7K0z7VX3b?Nh41iQ9NXJn2
-!s100 Nk<Sj]JiAZhO`P5EX8N=n1
+DEx4 work 2 tb 0 22 4BFD_YKP6]OHT>2ZY]Dlh2
+l53
+L17
+Vj:WVQ<?MP^c3B8mU<RV_n3
+!s100 UZbQ1li15VZ9N:8EE8lEO1
 R6
 32
 R7
 !i10b 1
 R8
-Z18 !s90 -reportprogress|300|-work|work|tp3.vhd|
-Z19 !s107 tp3.vhd|
+R19
+R20
+!i113 1
+R11
+R12
+Etp3
+Z22 w1686033530
+R15
+R16
+R2
+R3
+R0
+Z23 8tp3.vhd
+Z24 Ftp3.vhd
+l0
+L11
+V@oojg]<Ze:]7<Z5FE5Q:U0
+!s100 ??46>A3<=]DAFz8=H6Ck20
+R6
+32
+R7
+!i10b 1
+R8
+Z25 !s90 -reportprogress|300|-work|work|tp3.vhd|
+Z26 !s107 tp3.vhd|
 !i113 1
 R11
 R12
 Atp3
 R13
-R14
+R15
+R16
 R2
 R3
-DEx4 work 3 tp3 0 22 7K0z7VX3b?Nh41iQ9NXJn2
-l25
-L21
-Vhn<l1^1_=G3Z:f9O<9XW=1
-!s100 Toc3f3RfNOkEblKbGaD;[2
+R21
+l29
+L23
+VT1PD]GdVk5Ffbio_DP]Em3
+!s100 WCTm5Y@clZPeoZVQ;N^;P0
 R6
 32
 R7
 !i10b 1
 R8
-R18
-R19
+R25
+R26
 !i113 1
 R11
 R12

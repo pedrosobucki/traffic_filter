@@ -9,10 +9,10 @@ use IEEE.std_logic_unsigned.all;
 -- Entidade
 --------------------------------------
 entity tp3 is 
-  port (clock, reset, din, alarme_int: in std_logic;
+  port (clock, reset, din: in std_logic;
         prog: in std_logic_vector (2 downto 0);
         padrao: in std_logic_vector (7 downto 0);
-        dout, alarm: out std_logic;
+        dout, alarme: out std_logic;
         numero: out std_logic_vector (1 downto 0)
         );
 end entity; 
@@ -23,7 +23,7 @@ end entity;
 architecture tp3 of tp3 is
   type state is (IDLE, PAD1, PAD2, PAD3, PAD4, BUSCANDO, BLOQUEIO, ZERA);
   signal EA, PE: state;
-  signal found: std_logic:='0';
+  signal found, alarme_int: std_logic:='0';
   signal program, sel, match: std_logic_vector (3 downto 0);
   signal data: std_logic_vector(7 downto 0);
 begin  
@@ -39,75 +39,117 @@ begin
   end process;
 
   -- Processo para definir o proximo estado
-  begin case( EA, prog ) is
-  
-    when IDLE =>
-      PE <= PAD1 when conv_integer(prog) = 1 else
-            PAD2 when conv_integer(prog) = 2 else
-            PAD3 when conv_integer(prog) = 3 else
-            PAD4 when conv_integer(prog) = 4 else
-            BUSCANDO when conv_integer(prog) = 5 else
-            IDLE;
-  
-    when PAD1 =>
-      PE <= PAD1 when conv_integer(prog) = 1 else
-            PAD2 when conv_integer(prog) = 2 else
-            PAD3 when conv_integer(prog) = 3 else
-            PAD4 when conv_integer(prog) = 4 else
-            BUSCANDO when conv_integer(prog) = 5 else
-            IDLE;
-  
-    when PAD2 =>
-      PE <= PAD1 when conv_integer(prog) = 1 else
-            PAD2 when conv_integer(prog) = 2 else
-            PAD3 when conv_integer(prog) = 3 else
-            PAD4 when conv_integer(prog) = 4 else
-            BUSCANDO when conv_integer(prog) = 5 else
-            IDLE;
-  
-    when PAD3 =>
-      PE <= PAD1 when conv_integer(prog) = 1 else
-            PAD2 when conv_integer(prog) = 2 else
-            PAD3 when conv_integer(prog) = 3 else
-            PAD4 when conv_integer(prog) = 4 else
-            BUSCANDO when conv_integer(prog) = 5 else
-            IDLE;
-  
-    when PAD4 =>
-      PE <= PAD1 when conv_integer(prog) = 1 else
-            PAD2 when conv_integer(prog) = 2 else
-            PAD3 when conv_integer(prog) = 3 else
-            PAD4 when conv_integer(prog) = 4 else
-            BUSCANDO when conv_integer(prog) = 5 else
-            IDLE;
+  process ( EA, prog )
+  begin
+      case EA is
+      
+        when IDLE =>
+            if conv_integer(prog) = 1 then
+              PE <= PAD1;
+            elsif conv_integer(prog) = 2 then
+              PE <= PAD2;
+            elsif conv_integer(prog) = 3 then
+              PE <= PAD3;
+            elsif conv_integer(prog) = 4 then
+              PE <= PAD4;
+            elsif conv_integer(prog) = 5 then
+              PE <= BUSCANDO;
+            else
+              PE <= IDLE;
+            end if;
+      
+        when PAD1 =>
+            if conv_integer(prog) = 1 then
+              PE <= PAD1;
+            elsif conv_integer(prog) = 2 then
+              PE <= PAD2;
+            elsif conv_integer(prog) = 3 then
+              PE <= PAD3;
+            elsif conv_integer(prog) = 4 then
+              PE <= PAD4;
+            elsif conv_integer(prog) = 5 then
+              PE <= BUSCANDO;
+            else
+              PE <= IDLE;
+            end if;
+      
+        when PAD2 =>
+            if conv_integer(prog) = 1 then
+              PE <= PAD1;
+            elsif conv_integer(prog) = 2 then
+              PE <= PAD2;
+            elsif conv_integer(prog) = 3 then
+              PE <= PAD3;
+            elsif conv_integer(prog) = 4 then
+              PE <= PAD4;
+            elsif conv_integer(prog) = 5 then
+              PE <= BUSCANDO;
+            else
+              PE <= IDLE;
+            end if;
+      
+        when PAD3 =>
+            if conv_integer(prog) = 1 then
+              PE <= PAD1;
+            elsif conv_integer(prog) = 2 then
+              PE <= PAD2;
+            elsif conv_integer(prog) = 3 then
+              PE <= PAD3;
+            elsif conv_integer(prog) = 4 then
+              PE <= PAD4;
+            elsif conv_integer(prog) = 5 then
+              PE <= BUSCANDO;
+            else
+              PE <= IDLE;
+            end if;
+      
+        when PAD4 =>
+            if conv_integer(prog) = 1 then
+              PE <= PAD1;
+            elsif conv_integer(prog) = 2 then
+              PE <= PAD2;
+            elsif conv_integer(prog) = 3 then
+              PE <= PAD3;
+            elsif conv_integer(prog) = 4 then
+              PE <= PAD4;
+            elsif conv_integer(prog) = 5 then
+              PE <= BUSCANDO;
+            else
+              PE <= IDLE;
+            end if;
 
-    when BUSCANDO =>
-      if found = 1 then 
-        PE <= BLOQUEIO;
-      else
-        PE <= BUSCANDO;
-      end if;
+        when BUSCANDO =>
+            if found = '1' then 
+              PE <= BLOQUEIO;
+            else
+              PE <= BUSCANDO;
+            end if;
 
-    when BLOQUEIO =>
-        PE <= BUSCANDO when conv_integer(prog) = 6 else
-              ZERA when conv_integer(prog) = 7 else
-              BLOQUEIO;
+        when BLOQUEIO =>
+            if conv_integer(prog) = 6 then
+              PE <= BUSCANDO;
+            elsif conv_integer(prog) = 7 then
+              PE <= ZERA;
+            else
+              PE <= BLOQUEIO;
+            end if;
 
-    when ZERA => 
-        PE <= IDLE;
-  
-    when others =>
-        EA <= IDLE;
+        when ZERA => 
+            PE <= IDLE;
+      
+        when others =>
+            PE <= IDLE;
 
-  end case ;
+      end case ;
+  end process;
 
   process(clock, reset)
   begin
     if reset = '1' then
-      data <= others '0';
-    elsif rising_edge(clock)
+      data <= "00000000";
+    elsif rising_edge(clock) then
       if EA = ZERA then
-        data <= others '0';
+        data <= "00000000";
       elsif EA /= BLOQUEIO then
         data(7) <= data(6);
         data(6) <= data(5);
@@ -119,7 +161,7 @@ begin
         data(0) <= din;
       end if;
     end if;
-  process end;
+  end process;
 
   -- REGISTRADOR DE DESLOCAMENTO QUE RECEBE O FLUXO DE ENTRADA
 
@@ -147,10 +189,10 @@ begin
   process(clock, reset)
   begin
     if reset = '1' then
-      sel <= others '0';
-    elsif rising_edge(clock)
+      sel <= "0000";
+    elsif rising_edge(clock) then
       if EA = ZERA then
-        sel <= others '0';
+        sel <= "0000";
       elsif EA = PAD1 then
         sel(0) <= '1';
       elsif EA = PAD2 then
@@ -161,7 +203,7 @@ begin
         sel(3) <= '1';
       end if;
     end if;
-  process end;
+  end process;
 
   --alarme_int <= found when EA = BUSCANDO or EA = BLOQUEIO else '0';
 
@@ -169,14 +211,14 @@ begin
   begin
     if reset = '1' then
       alarme_int <= '0';
-    elsif rising_edge(clock)
+    elsif rising_edge(clock) then
       if EA = BUSCANDO or EA = BLOQUEIO then
-        alarme_int <= others found;
+        alarme_int <= found;
       elsif EA = ZERA then
         alarme_int <= '0';
       end if;
     end if;
-  process end;
+  end process;
   
   --  registradores para ativar as comparações
 
@@ -187,7 +229,7 @@ begin
   -- SAIDAS
   alarme <= alarme_int;
   
-  dout <= din when not alarme_int else '0';
+  dout <= din when not alarme_int = '1' else '0';
 
   numero <= "11" when match(3) = '1' else
             "10" when match(2) = '1' else
