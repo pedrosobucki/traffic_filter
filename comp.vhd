@@ -20,8 +20,10 @@ begin
     elsif rising_edge(clock) then
 
         if habilita = '1' then
-            padrao <= pattern when prog = '1' else
-                      others '0';
+
+            if prog = '1' then
+                padrao <= pattern;
+            end if;
             
             igual <=  '1' when dado = padrao else
                       '0';
@@ -30,6 +32,6 @@ begin
         else
             match <= '0';
         end if;
-        
+
     end if;
 end a1;

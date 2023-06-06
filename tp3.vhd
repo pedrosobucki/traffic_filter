@@ -82,7 +82,7 @@ begin
             IDLE;
 
     when BUSCANDO =>
-      if found = 1 then
+      if found = 1 then 
         PE <= BLOQUEIO;
       else
         PE <= BUSCANDO;
@@ -100,6 +100,26 @@ begin
         EA <= IDLE;
 
   end case ;
+
+  process(clock, reset)
+  begin
+    if reset = '1' then
+      data <= others '0';
+    elsif rising_edge(clock)
+      if EA = ZERA then
+        data <= others '0';
+      elsif EA /= BLOQUEIO then
+        data(7) <= data(6);
+        data(6) <= data(5);
+        data(5) <= data(4);
+        data(4) <= data(3);
+        data(3) <= data(2);
+        data(2) <= data(1);
+        data(1) <= data(0);
+        data(0) <= din;
+      end if;
+    end if;
+  process end;
 
   -- REGISTRADOR DE DESLOCAMENTO QUE RECEBE O FLUXO DE ENTRADA
 
@@ -119,14 +139,44 @@ begin
 
   found <= '1' when match /= "0000";
 
-  
-  alarme_int <= found when EA = BUSCANDO or EA = BLOQUEIO else
-                '0';
-
   program(0) <= '1' when EA = PAD1 else '0';
   program(1) <= '1' when EA = PAD2 else '0';
   program(2) <= '1' when EA = PAD3 else '0';
   program(3) <= '1' when EA = PAD4 else '0';
+
+  process(clock, reset)
+  begin
+    if reset = '1' then
+      sel <= others '0';
+    elsif rising_edge(clock)
+      if EA = ZERA then
+        sel <= others '0';
+      elsif EA = PAD1 then
+        sel(0) <= '1';
+      elsif EA = PAD2 then
+        sel(1) <= '1';
+      elsif EA = PAD3 then
+        sel(2) <= '1';
+      elsif EA = PAD4 then
+        sel(3) <= '1';
+      end if;
+    end if;
+  process end;
+
+  --alarme_int <= found when EA = BUSCANDO or EA = BLOQUEIO else '0';
+
+  process(clock, reset)
+  begin
+    if reset = '1' then
+      alarme_int <= '0';
+    elsif rising_edge(clock)
+      if EA = BUSCANDO or EA = BLOQUEIO then
+        alarme_int <= others found;
+      elsif EA = ZERA then
+        alarme_int <= '0';
+      end if;
+    end if;
+  process end;
   
   --  registradores para ativar as comparações
 
@@ -137,8 +187,7 @@ begin
   -- SAIDAS
   alarme <= alarme_int;
   
-  dout <= din when not alarme_int else
-          '0';
+  dout <= din when not alarme_int else '0';
 
   numero <= "11" when match(3) = '1' else
             "10" when match(2) = '1' else
