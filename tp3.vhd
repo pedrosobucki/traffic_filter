@@ -11,7 +11,7 @@ use IEEE.std_logic_unsigned.all;
 entity tp3 is 
   port (clock, reset, din: in std_logic;
         prog: in std_logic_vector (2 downto 0);
-        padrao: in std_logic_vector (7 downto 0);
+        padrao: in std_logic_vector (7 downto 0) := "00000000";
         dout, alarme: out std_logic;
         numero: out std_logic_vector (1 downto 0)
         );
@@ -179,7 +179,7 @@ begin
   cd4: entity work.compara_dado
     port map (dado => data, pattern => padrao, prog => program(3), habilita => sel(3), match => match(3), clock => clock, reset => reset);
 
-  found <= '1' when match /= "0000";
+  found <= '1' when match /= "0000" else '0';
 
   program(0) <= '1' when EA = PAD1 else '0';
   program(1) <= '1' when EA = PAD2 else '0';
