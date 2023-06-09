@@ -7,9 +7,9 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/pedro/Desktop/MODELSIM/Trabalho 3
+Z0 dC:/users/pedro/Desktop/MODELSIM/Trabalho 3
 Ecompara_dado
-Z1 w1686103715
+Z1 w1686290060
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 R0
@@ -21,9 +21,9 @@ V_4o[9eEh?EibD>JMmAR^;3
 !s100 LU?U_J8M9X92DQ>OYL3=H0
 Z6 OV;C;10.5b;63
 32
-Z7 !s110 1686105197
+Z7 !s110 1686290986
 !i10b 1
-Z8 !s108 1686105197.000000
+Z8 !s108 1686290986.000000
 Z9 !s90 -reportprogress|300|-work|work|comp.vhd|
 Z10 !s107 comp.vhd|
 !i113 1
@@ -35,8 +35,8 @@ R3
 Z13 DEx4 work 12 compara_dado 0 22 _4o[9eEh?EibD>JMmAR^;3
 l17
 L14
-V2zT;7C5U1``2YhFoiEZnB1
-!s100 D0S]bOe6g];YheLOPoA?O1
+VB@1=MFMQ8HD6_lzONFQ]>3
+!s100 ;iWdPkcGA5E[K4@jabmnG0
 R6
 32
 R7
@@ -92,7 +92,7 @@ R20
 R11
 R12
 Etp3
-Z22 w1686105193
+Z22 w1686290983
 R15
 R16
 R2
@@ -123,8 +123,8 @@ R3
 R21
 l29
 L23
-VWaA?X91ZI5U[g[Ub^kO342
-!s100 KWM3]:ECJY_4YBFH9ao_93
+VP]7Mf<jHzX0<n[ZWgXWGD2
+!s100 ?R7LQNS:4jISIGOA<aGcG1
 R6
 32
 R7
