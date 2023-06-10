@@ -21,23 +21,13 @@ begin
           padrao <= "00000000";
       elsif rising_edge(clock) then
 
-          if habilita = '1' then
-              
-              if (dado = padrao) then
-                  igual <= '1';
-              else
-                  igual <= '0';
-              end if;
-
-              match <= igual;
-          else
-              match <= '0';
-          end if;
-
           if prog = '1' then
               padrao <= pattern;
           end if;
 
       end if;
     end process;
+
+    igual <= '1' when dado = padrao else '0';
+    match <= igual when habilita = '1' else '0';
 end a1;

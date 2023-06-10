@@ -167,16 +167,16 @@ begin
 
   -- 4 PORT MAPS PARA OS compara_dado  
 
-  CD1: entity work.compara_dado
+  CD0: entity work.compara_dado
     port map (dado => data, pattern => padrao, prog => program(0), habilita => sel(0), match => match(0), clock => clock, reset => reset);
 
-  CD2: entity work.compara_dado
+  CD1: entity work.compara_dado
     port map (dado => data, pattern => padrao, prog => program(1), habilita => sel(1), match => match(1), clock => clock, reset => reset);
 
-  CD3: entity work.compara_dado
+  CD2: entity work.compara_dado
     port map (dado => data, pattern => padrao, prog => program(2), habilita => sel(2), match => match(2), clock => clock, reset => reset);
     
-  CD4: entity work.compara_dado
+  CD3: entity work.compara_dado
     port map (dado => data, pattern => padrao, prog => program(3), habilita => sel(3), match => match(3), clock => clock, reset => reset);
 
   process (clock, reset)
