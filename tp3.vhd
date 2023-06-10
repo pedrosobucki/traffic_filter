@@ -151,7 +151,7 @@ begin
     elsif rising_edge(clock) then
       if EA = ZERA then
         data <= "00000000";
-      elsif EA /= BLK then
+      else
         data(7) <= din;
         data(6) <= data(7);
         data(5) <= data(6);
