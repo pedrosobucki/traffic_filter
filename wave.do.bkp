@@ -9,13 +9,17 @@ add wave -noupdate -radix hexadecimal /tb/DUT/data
 add wave -noupdate -divider PROGRAMACAO
 add wave -noupdate -radix unsigned /tb/prog
 add wave -noupdate -divider ALARME
+add wave -noupdate /tb/DUT/match
 add wave -noupdate /tb/DUT/match(0)
 add wave -noupdate /tb/DUT/match(1)
 add wave -noupdate /tb/DUT/match(2)
 add wave -noupdate /tb/DUT/match(3)
+add wave -noupdate /tb/DUT/found
+add wave -noupdate /tb/DUT/alarme_int
 add wave -noupdate /tb/alarme
 add wave -noupdate -radix unsigned /tb/numero
 add wave -noupdate /tb/DUT/EA
+add wave -noupdate /tb/DUT/PE
 add wave -noupdate -divider PADROES
 add wave -noupdate -radix hexadecimal /tb/padrao
 add wave -noupdate /tb/DUT/sel(0)
