@@ -59,64 +59,16 @@ begin
             end if;
       
         when PAD1 =>
-            if conv_integer(prog) = 1 then
-              PE <= PAD1;
-            elsif conv_integer(prog) = 2 then
-              PE <= PAD2;
-            elsif conv_integer(prog) = 3 then
-              PE <= PAD3;
-            elsif conv_integer(prog) = 4 then
-              PE <= PAD4;
-            elsif conv_integer(prog) = 5 then
-              PE <= BSC;
-            else
-              PE <= IDLE;
-            end if;
+            PE <= IDLE;
       
         when PAD2 =>
-            if conv_integer(prog) = 1 then
-              PE <= PAD1;
-            elsif conv_integer(prog) = 2 then
-              PE <= PAD2;
-            elsif conv_integer(prog) = 3 then
-              PE <= PAD3;
-            elsif conv_integer(prog) = 4 then
-              PE <= PAD4;
-            elsif conv_integer(prog) = 5 then
-              PE <= BSC;
-            else
-              PE <= IDLE;
-            end if;
+            PE <= IDLE;
       
         when PAD3 =>
-            if conv_integer(prog) = 1 then
-              PE <= PAD1;
-            elsif conv_integer(prog) = 2 then
-              PE <= PAD2;
-            elsif conv_integer(prog) = 3 then
-              PE <= PAD3;
-            elsif conv_integer(prog) = 4 then
-              PE <= PAD4;
-            elsif conv_integer(prog) = 5 then
-              PE <= BSC;
-            else
-              PE <= IDLE;
-            end if;
+            PE <= IDLE;
       
         when PAD4 =>
-            if conv_integer(prog) = 1 then
-              PE <= PAD1;
-            elsif conv_integer(prog) = 2 then
-              PE <= PAD2;
-            elsif conv_integer(prog) = 3 then
-              PE <= PAD3;
-            elsif conv_integer(prog) = 4 then
-              PE <= PAD4;
-            elsif conv_integer(prog) = 5 then
-              PE <= BSC;
-            else
-              PE <= IDLE;
-            end if;
+            PE <= IDLE;
 
         when BSC =>
             if found = '1' then 
