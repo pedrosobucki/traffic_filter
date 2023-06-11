@@ -74,7 +74,17 @@ begin
             if found = '1' then 
               PE <= BLK;
             else
-              PE <= BSC;
+              if conv_integer(prog) = 1 then
+                PE <= PAD1;
+              elsif conv_integer(prog) = 2 then
+                PE <= PAD2;
+              elsif conv_integer(prog) = 3 then
+                PE <= PAD3;
+              elsif conv_integer(prog) = 4 then
+                PE <= PAD4;
+              else
+                PE <= BSC;
+              end if;
             end if;
 
         when BLK =>
